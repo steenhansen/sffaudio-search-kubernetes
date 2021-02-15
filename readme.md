@@ -85,6 +85,7 @@ Get EXTERNAL service IPs | $ kubectl get svc
 &nbsp; | 
 &nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;node--webserver--service 104.200.27.60
 &nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http://104.200.27.60 (empty database)
+
 ![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/kubectl_get_svc.png)
 
 
