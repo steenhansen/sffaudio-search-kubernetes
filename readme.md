@@ -71,11 +71,6 @@ Wait for 4 pods to start | $ kubectl get pods -w
 
 ![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/kubectl_get_pods.png)
 
-&nbsp;
-&nbsp;
-&nbsp;
-
-
 &nbsp; | &nbsp;
 ------------ | -------------
 Get EXTERNAL service IPs | $ kubectl get svc
