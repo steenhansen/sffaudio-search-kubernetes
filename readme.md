@@ -68,6 +68,7 @@ Create a 3 node cluster| 3 Linode 2GB for a total of $30 a month
 Copy kubeconfig.yaml file | into C:\kubes\linode-kube-config.yaml
 Start cluster | $ kubectl apply -k ./   
 Wait for 4 pods to start | $ kubectl get pods -w
+
 ![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/kubectl_get_pods.png)
 
 &nbsp;
