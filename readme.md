@@ -68,14 +68,27 @@ Create a 3 node cluster| 3 Linode 2GB for a total of $30 a month
 Copy kubeconfig.yaml file | into C:\kubes\linode-kube-config.yaml
 Start cluster | $ kubectl apply -k ./   
 Wait for 4 pods to start | $ kubectl get pods -w
+![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/kubectl_get_pods.png)
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+
+&nbsp; | &nbsp;
+------------ | -------------
 Get EXTERNAL service IPs | $ kubectl get svc
-&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; neo4j--db--service 104.200.27.49
-&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http://104.200.27.49:7474/browser/
+&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp; neo4j--db--service 104.200.26.55
+&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http://104.200.26.55:7474/browser/
 &nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; password=yer_password 
 &nbsp; | 
-&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;node--webserver--service 104.200.26.78
-&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http://104.200.26.78 (empty database)
-&nbsp; | 
+&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;node--webserver--service 104.200.27.60
+&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; http://104.200.27.60 (empty database)
+![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/kubectl_get_svc.png)
+
+
+&nbsp; | &nbsp;
+------------ | -------------
 Launch CronJob | edit cron--job.yaml for an immediate cronjob run
 &nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;schedule: "17 * * * *"  # start 17 minutes after every hour cron job
 &nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;#schedule: "43 0 * * 0" # stop weekly cron job 
@@ -83,7 +96,7 @@ Set cron job run time | $ kubectl apply -f cron--job.yaml
 &nbsp; | $ kubectl get pods -w to see cron job launch in a pod
 &nbsp; | 
 &nbsp; | Wait until *(20315) Node labels in Neo4j browser (up to 10 minutes) 
-View full database | http://104.200.26.78 (refresh might be needed to clear cache)
+View full database | http://104.200.27.60 (refresh might be needed to clear cache)
 
 #### Linode interface after cluster has started:
 
