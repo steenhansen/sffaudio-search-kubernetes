@@ -1,0 +1,13 @@
+# kubectl apply -k ./   
+
+resources:
+  - neo4j--db.yaml
+  - node--webserver.yaml
+  - node--cron.yaml
+  - secret--vars.yaml
+  - env--vars.yaml
+  - cron--job.yaml
+  - metrics--server.yaml
+
+
+

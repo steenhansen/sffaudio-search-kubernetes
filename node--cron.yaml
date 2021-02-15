@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node--cron--service
+  labels:
+    app: node--cron--app
+spec:
+  type: ClusterIP          
+  ports:
+  - name: cron--ports
+    port: 81
+    targetPort: 8181
+  selector:
+    app: node--cron--app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node--cron--service
+  labels:
+    app: node--cron--app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node--cron--app
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: node--cron--app
+    spec:
+      containers:
+      - image: steenhansen/sff-audio-kube:update-nodejs
+        name: node--cron   
+        imagePullPolicy: Always
+        command: ["node"]
+        args: ["/nodejs-base/web-app/update__db/cron-server-81.js"] 
+        env:
+        - name: INIT_NEO4J_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: neo4j--db--secret
+              key: INIT_NEO4J_PASSWORD
+        - name: NEO4J_AUTH
+          valueFrom:
+            secretKeyRef:
+              name: neo4j--db--secret
+              key: NEO4J_AUTH
+        - name: NEO4J_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: neo4j--db--secret
+              key: NEO4J_USERNAME      
+        ports:
+        - containerPort: 8181
+        envFrom:
+        - configMapRef:
+            name: env--vars--config

@@ -1,0 +1,10 @@
+
+
+https://www.linode.com/community/questions/19756/how-can-i-deploy-the-kubernetes-metrics-server-on-lke
+
+
+https://github.com/kubernetes-sigs/metrics-server
+
+
+kubectl top nodes
+kubectl top pods

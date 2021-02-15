@@ -1,0 +1,11 @@
+
+
+INITIALIZE on WINDOWS:
+	    $ setx KUBECONFIG "C:\kubes\linode-kube-config.yaml"
+    	RESTART terminal	
+ 	    $ echo %KUBECONFIG%
+
+
+
+USE:
+    Download Linode cluster kubeconfig and save it as "C:\kubes\linode-kube-config.yaml"         

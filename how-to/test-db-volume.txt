@@ -1,0 +1,10 @@
+
+
+
+$ kubectl get pods
+
+$ kubectl delete pod neo4j--db--service-7989fdc-lwdjr
+
+$ kubectl get pods -w
+
+refresh browser once all pods running again

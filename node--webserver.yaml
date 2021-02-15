@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node--webserver--service
+  labels:
+    app: node--webserver--app
+spec:
+  type: LoadBalancer         
+  ports:
+  - name: web--ports
+    port: 80
+    targetPort: 8080
+  selector:
+    app: node--webserver--app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node--webserver--service
+  labels:
+    app: node--webserver--app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node--webserver--app
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: node--webserver--app
+    spec:
+      containers:
+      - image: steenhansen/sff-audio-kube:base-nodejs
+        name: node--webserver   
+        imagePullPolicy: Always
+        command: ["node"]
+        args: ["/nodejs-base/web-app/node__webserver/const-boot-web-80.js"] 
+        env:
+        - name: INIT_NEO4J_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: neo4j--db--secret
+              key: INIT_NEO4J_PASSWORD
+        - name: NEO4J_AUTH
+          valueFrom:
+            secretKeyRef:
+              name: neo4j--db--secret
+              key: NEO4J_AUTH
+        - name: NEO4J_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: neo4j--db--secret
+              key: NEO4J_USERNAME      
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: env--vars--config

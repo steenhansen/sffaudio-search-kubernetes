@@ -1,0 +1,45 @@
+
+Create Linode cluster 
+    https://cloud.linode.com/kubernetes/create
+        add 3 Linodes 2GB for $30.00/month
+
+Download kubeconfig and save it into "C:\kubes/linode-kube-config.yaml"      
+
+$ kubectl apply -k ./     # launch program on Linode
+ 
+$ kubectl get pods -w     # wait until they are all running before getting service ips
+
+$ kubectl get svc         # get external ips 
+
+
+
+
+
+
+
+
+Show pod errors:
+$ kubectl logs node--webserver--service-5c844d7c74-s5j2v     
+
+
+Enter container
+$ kubectl exec --stdin --tty node--webserver--service-6f5cf6f9fc-vrkl7 -- /bin/bash
+
+
+
+
+# kubectl logs node--cron--service-7f956d79cf-t4269
+node:internal/modules/cjs/loader:928
+  throw err;
+  ^
+
+Error: Cannot find module '/nodejs-base/web-app/update__db/cron-server-81.js'
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:925:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:769:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:76:12)
+    at node:internal/main/run_main_module:17:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+

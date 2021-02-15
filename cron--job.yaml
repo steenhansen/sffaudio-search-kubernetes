@@ -1,0 +1,20 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: sffaudio--cron--job
+  labels:
+    app: launch--job--app
+spec:
+  schedule: "23 * * * *"       # 17 past every hour, apply to update database immediately
+#  schedule: "43 0 * * 0"       # 43 past midnight sunday morning
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: sffaudio--cron--job
+            image: alpine:3.10  
+            imagePullPolicy: IfNotPresent
+            command: ["wget"]
+            args: ["http://node--cron--service:81/cron-new-db-version-81"]
+          restartPolicy: OnFailure
