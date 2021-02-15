@@ -46,6 +46,8 @@ View Neo4j database | *http://localhost:7474/browser*
 Update Neo4j database | *http://localhost:81/cron-new-db-version-81* (wait 2 minutes)
 View 7413 books | *http://localhost/* (refresh to clear cache)
 
+#### Docker Desktop after docker-run.bat has exectued:
+
 ![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/docker_run.png)
 
 &nbsp;
@@ -82,9 +84,8 @@ Set cron job run time | $ kubectl apply -f cron--job.yaml
 &nbsp; | 
 &nbsp; | Wait until *(20315) Node labels in Neo4j browser (up to 10 minutes) 
 View full database | http://104.200.26.78 (refresh might be needed to clear cache)
-&nbsp; | 
-Quit | [Kubernetes Cluster](https://cloud.linode.com/kubernetes/clusters)
-Volume | [Volume is still alive and kicking](https://cloud.linode.com/volumes)
+
+#### Linode interface after cluster has started:
 
 ![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/lke.png)
 
