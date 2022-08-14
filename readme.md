@@ -96,7 +96,7 @@ Set cron job run time | $ kubectl apply -f cron--job.yaml
 View full database | http://104.200.27.60 (refresh might be needed to clear cache)
 
 #### Linode interface after cluster has started:
-
+<a name="kubernetes-screen-shot"></a>
 ![visual explanation](https://github.com/steenhansen/sffaudio-search-kubernetes/blob/master/lke.png)
 
 
